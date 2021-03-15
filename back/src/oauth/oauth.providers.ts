@@ -1,5 +1,5 @@
 import { Connection } from 'typeorm';
-import { Oauth } from './entity/oauth.entity';
+import { Oauth } from './entities/oauth.entity';
 
 export const OauthProviders = [
   {

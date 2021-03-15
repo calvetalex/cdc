@@ -9,7 +9,7 @@ import { generator } from 'rand-token';
 import { Users } from 'src/users/entities/users.entity';
 import { UserService } from 'src/users/users.service';
 import { Repository } from 'typeorm';
-import { Oauth } from './entity/oauth.entity';
+import { Oauth } from './entities/oauth.entity';
 import { OauthDto } from './oauth.dto';
 
 @Injectable()
