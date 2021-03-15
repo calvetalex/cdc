@@ -7,7 +7,7 @@ import { ProfilesDto } from './profiles.dto';
 export class ProfilesService {
   constructor(
     @Inject('PROFILES_REPOSITORY')
-    private readonly profilesRepository: Repository<Profiles>
+    private readonly profilesRepository: Repository<Profiles>,
   ) {}
 
   async saveData(action: ProfilesDto): Promise<Profiles> {

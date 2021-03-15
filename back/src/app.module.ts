@@ -7,12 +7,7 @@ import { ServicesModule } from './services/services.module';
 import { ProfilesModule } from './profiles/profiles.module';
 
 @Module({
-  imports: [
-    UserModule,
-    OauthModule,
-    ServicesModule,
-    ProfilesModule,
-  ],
+  imports: [UserModule, OauthModule, ServicesModule, ProfilesModule],
   controllers: [AppController],
   providers: [AppService],
 })

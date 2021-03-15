@@ -1,4 +1,14 @@
-import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Put, Res } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpStatus,
+  Param,
+  Post,
+  Put,
+  Res,
+} from '@nestjs/common';
 import { Profiles } from './entities/profiles.entity';
 import { ProfilesDto } from './profiles.dto';
 import { ProfilesService } from './profiles.service';
@@ -19,13 +29,16 @@ export class ProfilesController {
 
   @Put()
   @Post()
-  async createProfile(@Res() res, @Body() body: ProfilesDto): Promise<Profiles> {
+  async createProfile(
+    @Res() res,
+    @Body() body: ProfilesDto,
+  ): Promise<Profiles> {
     try {
       const newProfile = this.profilesService.saveData(body);
       return res.status(HttpStatus.OK).json({
         newProfile,
       });
-    } catch(e) {
+    } catch (e) {
       console.error('CANNOT CREATE NEW PROFILE', e);
       return res.status(HttpStatus.BAD_REQUEST).json({
         message: 'An error occurred',

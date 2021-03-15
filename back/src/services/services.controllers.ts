@@ -1,4 +1,14 @@
-import { Controller, Get, Res, Body, HttpStatus, Param, Post, Delete, Put } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Res,
+  Body,
+  HttpStatus,
+  Param,
+  Post,
+  Delete,
+  Put,
+} from '@nestjs/common';
 import { Services } from './entities/services.entity';
 import { ServicesDto } from './services.dto';
 import { ServicesService } from './services.service';
@@ -6,12 +16,12 @@ import { ServicesService } from './services.service';
 @Controller('/services')
 export class ServicesControllers {
   constructor(private readonly servicesService: ServicesService) {}
-  
+
   @Get()
   async getAll(): Promise<Services[]> {
     return await this.servicesService.getAll();
   }
-  
+
   @Get('/parent/:id')
   async getByParent(@Param('id') id: number): Promise<Services[]> {
     return await this.servicesService.getByModule(id);
@@ -24,7 +34,7 @@ export class ServicesControllers {
       return res.status(HttpStatus.OK).json({
         data,
       });
-    } catch(err) {
+    } catch (err) {
       console.error('CANNOT ADD SERVICE', err);
       return res.status(HttpStatus.BAD_REQUEST).json({
         message: 'ERROR',
@@ -40,7 +50,7 @@ export class ServicesControllers {
       return res.status(HttpStatus.OK).json({
         data,
       });
-    } catch(err) {
+    } catch (err) {
       console.error('CANNOT ADD SERVICE', err);
       return res.status(HttpStatus.BAD_REQUEST).json({
         message: 'ERROR',
