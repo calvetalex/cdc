@@ -28,7 +28,7 @@ export class OauthController {
         }
         return res.status(HttpStatus.NOT_FOUND).json({});
       } catch (err) {
-        console.error(err);
+        console.error('[OAUTH] - ERROR OCCURRED', err);
         return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({});
       }
     } else {
@@ -45,7 +45,7 @@ export class OauthController {
       }
       return res.status(HttpStatus.NOT_FOUND).json({});
     } catch (err) {
-      console.error(err);
+      console.error('[OAUTH] - ERROR OCCURRED', err);
       return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({});
     }
   }

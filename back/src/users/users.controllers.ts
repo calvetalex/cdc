@@ -34,7 +34,7 @@ export class UserController {
         data,
       });
     } catch (err) {
-      console.error('An error occured on POST method for User');
+      console.error('[USERS] - An error occured on POST method for User');
       console.error(err);
       return res.status(HttpStatus.BAD_REQUEST).json({
         message: 'ERROR: impossible to create data',
@@ -51,7 +51,7 @@ export class UserController {
         data,
       });
     } catch (err) {
-      console.error('An error occured on PUT method for User');
+      console.error('[USERS] - An error occured on PUT method for User');
       console.error(err);
       return res.status(HttpStatus.BAD_REQUEST).json({
         message: 'ERROR: impossible to update data',
@@ -69,7 +69,7 @@ export class UserController {
         entity,
       });
     } catch (err) {
-      console.error('An error occured on PUT method for User');
+      console.error('[USERS] - An error occured on PUT method for User');
       console.error(err);
       return res.status(HttpStatus.BAD_REQUEST).json({
         message: 'ERROR: impossible to remove data',

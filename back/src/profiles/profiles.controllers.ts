@@ -39,7 +39,7 @@ export class ProfilesController {
         newProfile,
       });
     } catch (e) {
-      console.error('CANNOT CREATE NEW PROFILE', e);
+      console.error('[PROFILES] - CANNOT CREATE NEW PROFILE', e);
       return res.status(HttpStatus.BAD_REQUEST).json({
         message: 'An error occurred',
         status: 400,
@@ -56,7 +56,7 @@ export class ProfilesController {
         entity,
       });
     } catch (err) {
-      console.error('An error occurred on PUT method for User');
+      console.error('[PROFILES] - An error occurred on PUT method for User');
       console.error(err);
       return res.status(HttpStatus.BAD_REQUEST).json({
         message: 'ERROR: impossible to remove data',

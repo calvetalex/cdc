@@ -35,7 +35,7 @@ export class ServicesControllers {
         data,
       });
     } catch (err) {
-      console.error('CANNOT ADD SERVICE', err);
+      console.error('[SERVICES] - CANNOT ADD SERVICE', err);
       return res.status(HttpStatus.BAD_REQUEST).json({
         message: 'ERROR',
         status: 400,
@@ -51,7 +51,7 @@ export class ServicesControllers {
         data,
       });
     } catch (err) {
-      console.error('CANNOT ADD SERVICE', err);
+      console.error('[SERVICES] - CANNOT ADD SERVICE', err);
       return res.status(HttpStatus.BAD_REQUEST).json({
         message: 'ERROR',
         status: 400,
@@ -68,7 +68,10 @@ export class ServicesControllers {
         entity,
       });
     } catch (err) {
-      console.error('An error occured on PUT method for User', err);
+      console.error(
+        '[SERVICES] - An error occured on PUT method for User',
+        err,
+      );
       return res.status(HttpStatus.BAD_REQUEST).json({
         message: 'ERROR: impossible to remove data',
         status: 400,
