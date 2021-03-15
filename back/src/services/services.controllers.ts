@@ -24,7 +24,7 @@ export class ServicesControllers {
 
   @Get('/parent/:id')
   async getByParent(@Param('id') id: number): Promise<Services[]> {
-    return await this.servicesService.getByModule(id);
+    return await this.servicesService.getForModule(id);
   }
 
   @Post()

@@ -30,7 +30,7 @@ export class ServicesService {
     return this.servicesRepository.find();
   }
 
-  async getByModule(moduleId: number): Promise<Services[]> {
+  async getForModule(moduleId: number): Promise<Services[]> {
     return this.servicesRepository.find({ where: { fk_module_id: moduleId } });
   }
 }
