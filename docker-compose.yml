@@ -1,0 +1,83 @@
+version: "3.5"
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    restart: always
+    volumes:
+    - ./mysql-dump:/docker-entrypoint-initdb.d
+    - ./volumes/mysql/:/var/lib/mysql
+    networks:
+    - mysql_network
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: passroot
+      MYSQL_DATABASE: cdc
+
+  # phpmyadmin panel
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:4.8
+    restart: always
+    networks:
+    - mysql_network
+    ports:
+    - 8890:80
+    environment:
+        PMA_HOST: mysql
+
+  back:
+    build:
+      dockerfile: ./Dockerfile
+      context: ./back
+    networks:
+      - cdc_network
+      - mysql_network
+    tty: true
+    volumes:
+      - ./back/:/src
+    env_file:
+      - ./back/.env
+
+  back-nginx:
+    image: nginx:1.19.6-alpine
+    ports:
+      - "8080:80"
+    networks:
+      - cdc_network
+    volumes:
+      - nginx-back-data:/etc/nginx
+      - ./nginx-back/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx-back/default.conf:/etc/nginx/conf.d/default.conf
+
+  front:
+    build:
+      dockerfile: ./Dockerfile
+      context: ./front
+    networks:
+      - cdc_network
+    tty: true
+    volumes:
+      - ./front/:/src
+    environment:
+      REACT_APP_API_URL: "http://localhost:8080"
+      REACT_APP_GOOGLE_TOKEN: "406768800954-s23n3hlg3g5qgtaq2dai34jnv5vq7fjp.apps.googleusercontent.com"
+
+  front-nginx:
+    image: nginx:1.19.6-alpine
+    ports:
+      - "8081:80"
+    networks:
+      - cdc_network
+    volumes:
+      - nginx-front-data:/etc/nginx
+      - ./nginx-front/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx-front/default.conf:/etc/nginx/conf.d/default.conf
+
+volumes:
+  nginx-front-data:
+  nginx-back-data:
+
+networks:
+  cdc_network:
+  mysql_network:
