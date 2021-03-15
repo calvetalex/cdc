@@ -23,7 +23,7 @@ export class ProfilesController {
   }
 
   @Get(':name')
-  async getByName(@Param('name') name: string): Promise<Profiles> {
+  async getByName(@Param('name') name: string): Promise<any> {
     return await this.profilesService.getByName(name);
   }
 
