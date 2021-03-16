@@ -10,4 +10,7 @@ export class Modules {
 
   @Column('int')
   split: number;
+
+  @Column('bool')
+  global: boolean;
 }

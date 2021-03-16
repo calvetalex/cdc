@@ -1,7 +1,7 @@
 import backendFetch from './backendFetch';
 
 async function getAll() {
-    return backendFetch(`${process.REACT_APP_API_URL}/profiles`).then(resp => resp.json());
+    return backendFetch(`${process.env.REACT_APP_API_URL}/profiles`).then(resp => resp.json());
 }
 
 async function getProfileModules(name) {

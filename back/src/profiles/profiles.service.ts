@@ -27,7 +27,7 @@ export class ProfilesService {
   async getByName(name: string): Promise<any> {
     const profile = await this.profilesRepository.findOne({ where: { name } });
     try {
-      const modules = this.modulesService.getForProfile(profile.id);
+      const modules = await this.modulesService.getForProfile(profile.id);
       return { profile, modules };
     } catch (e) {
       console.error(

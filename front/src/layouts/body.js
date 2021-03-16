@@ -10,8 +10,8 @@ export default class Body extends Component {
                 <Navbar />
                 <div className="page-content d-flex align-items-stretch">
                     <div className="content-inner">
-                        <section>
-                            <Container fluid>
+                        <section style={{ height: '100%' }}>
+                            <Container fluid className="h-100">
                                 {children}
                             </Container>
                         </section>
