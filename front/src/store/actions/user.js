@@ -6,9 +6,8 @@ import {
 
 export function setUser(data) {
     return async (dispatch) => {
-        let user = await Backend.oauth.login(data);
-        console.log(user)
-        if (!user || user.role !== "admin") {
+        const user = await Backend.oauth.login(data);
+        if (!user || !user.admin) {
             return {};
         }
         dispatch({ type: USER_SET, payload: user });

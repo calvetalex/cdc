@@ -1,15 +1,15 @@
 import backendFetch from './backendFetch';
 
 async function getById(id) {
-    return backendFetch(`${process.env.REACT_APP_API_URL}/users/id/${id}`).then(resp => resp.json()).catch(e => {
-        console.error("Internal Server Error: " + e);
+    return backendFetch(`${process.env.REACT_APP_API_URL}/users/id/${id}`).then(resp => resp.json()).catch((e) => {
+        console.error(`Internal Server Error: ${e}`);
         return null;
     });
 }
 
 async function getByMail(mail) {
-    return backendFetch(`${process.env.REACT_APP_API_URL}/users/mail/${mail}`).then(resp => resp.json()).catch(e => {
-        console.error("Internal Server Error: " + e);
+    return backendFetch(`${process.env.REACT_APP_API_URL}/users/mail/${mail}`).then(resp => resp.json()).catch((e) => {
+        console.error(`Internal Server Error: ${e}`);
         return null;
     });
 }
@@ -23,6 +23,7 @@ async function getUsers(idList) {
         if (user) {
             return user;
         }
+        return null;
     })).catch(err => console.error(err));
     return res;
 }

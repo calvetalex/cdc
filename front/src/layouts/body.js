@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
 import Navbar from './navbar';
-import Footer from './footer';
 
 export default class Body extends Component {
     render() {
@@ -16,7 +15,6 @@ export default class Body extends Component {
                                 {children}
                             </Container>
                         </section>
-                        <Footer />
                     </div>
                 </div>
             </div>

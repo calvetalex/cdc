@@ -14,7 +14,7 @@ class LoginForm extends Component {
 
         this.state = {
             formValues: {
-                username: '',
+                email: '',
                 password: '',
             },
             isLoading: false,
@@ -64,7 +64,7 @@ class LoginForm extends Component {
                             <InputGroupAddon addonType="prepend">
                                 <InputGroupText>Email</InputGroupText>
                             </InputGroupAddon>
-                            <Input type="text" id="emailInput" name="username" placeholder="example@gmail.com" onChange={ev => this.handleChange(ev)} />
+                            <Input type="text" id="emailInput" name="email" placeholder="example@gmail.com" onChange={ev => this.handleChange(ev)} />
                         </InputGroup>
                     </FormGroup>
                     <FormGroup>
