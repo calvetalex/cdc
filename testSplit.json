@@ -1,0 +1,55 @@
+{
+    "profile": {
+        "id":2,
+        "name":"test_split"
+    },
+    "subModules": [
+        {
+            "id":2,
+            "fk_parent_id":2,
+            "split":1,
+            "global":true,
+            "subModules": [
+                {
+                    "id":3,
+                    "fk_parent_id":2,
+                    "split":0,
+                    "global":false,
+                    "services": [
+                        {
+                            "id":2,
+                            "fk_module_id":3,
+                            "place":0,
+                            "service_type":2,
+                            "data": [
+                                {
+                                    "src":"http://www.woo10.com/p67ab.jpg"
+                                },
+                                {
+                                    "src":"https://s1.1zoom.me/big0/132/Dogs_Funny_Bulldog_Puppy_Bokeh_571468_1280x853.jpg"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id":4,
+                    "fk_parent_id":2,
+                    "split":0,
+                    "global":false,
+                    "services": [
+                        {
+                            "id":3,
+                            "fk_module_id":4,
+                            "place":0,
+                            "service_type":5,
+                            "data": { 
+                                "city":"Toulouse"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

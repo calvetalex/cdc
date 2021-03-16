@@ -3,7 +3,7 @@ import Backend from '../../backend';
 
 export function setProfiles() {
     return async (dispatch) => {
-        const profiles = Backend.profiles.getAll();
+        const profiles = await Backend.profiles.getAll();
         if (!profiles) {
             return [];
         }
@@ -14,7 +14,7 @@ export function setProfiles() {
 
 export function addProfile(data) {
     return async (dispatch) => {
-        const profile = Backend.profiles.createProfile(data);
+        const profile = await Backend.profiles.createProfile(data);
         dispatch({ type: PROFILES_ADD, payload: profile });
         return profile;
     };

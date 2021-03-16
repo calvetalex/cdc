@@ -27,8 +27,8 @@ export class ProfilesService {
   async getByName(name: string): Promise<any> {
     const profile = await this.profilesRepository.findOne({ where: { name } });
     try {
-      const modules = await this.modulesService.getForProfile(profile.id);
-      return { profile, modules };
+      const subModules = await this.modulesService.getForProfile(profile.id);
+      return { profile, subModules };
     } catch (e) {
       console.error(
         `[PROFILES] - CANNOT LOAD PROFILE ${name} AND HIS MODULES`,

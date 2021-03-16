@@ -24,16 +24,14 @@ export class ModulesService {
     return this.modulesRepository.find();
   }
 
-  async getForProfile(id: number): Promise<any[]> {
-    console.log(`[MODULE] - getting modules and submodules for ${id}`)
+  async getForProfile(id: number, profile = true): Promise<any[]> {
     const modules: Modules[] = await this.modulesRepository.find({
-      where: { fk_parent_id: id },
+      where: { fk_parent_id: id, global: profile },
     });
-    console.log(modules);
     const res = await Promise.all(
       modules.map(async (elem) => {
         if (elem.split !== 0) {
-          const subModules = await this.getForProfile(elem.id);
+          const subModules = await this.getForProfile(elem.id, false);
           return { ...elem, subModules };
         } else {
           const services = await this.servicesService.getForModule(elem.id);

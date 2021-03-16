@@ -1,0 +1,25 @@
+{
+    "profile": {
+        "id":1,
+        "name":"test_simple"
+    },
+    "subModules": [
+        {
+            "id":1,
+            "fk_parent_id":1,
+            "split":0,
+            "global":true,
+            "services": [
+                {
+                    "id":1,
+                    "fk_module_id":1,
+                    "place":0,
+                    "service_type":1,
+                    "data": {
+                        "url":"https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                    }
+                }
+            ]
+        }
+    ]
+}
