@@ -122,7 +122,7 @@ class ActualityPage extends Component {
 
         return (
             <div className="d-flex flex-column h-100">
-                <div className="d-flex justify-content-between" style={{ width: '100%' }}>
+                <div className="d-flex justify-content-between" style={{ width: '100%', marginBottom: '1em' }}>
                     <h1>Profile preview:</h1>
                     {profiles ?
                         <Input type="select" style={{ width: '30%' }} name="profile" onChange={(ev) => this.setState({ current: profiles.find(elem => elem.id === Number(ev.target.value)) })}>
