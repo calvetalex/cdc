@@ -6,6 +6,7 @@ import { OauthModule } from './oauth/oauth.module';
 import { ServicesModule } from './services/services.module';
 import { ProfilesModule } from './profiles/profiles.module';
 import { ModulesModule } from './modules/modules.module';
+import { WeatherModule } from './weather/weather.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { ModulesModule } from './modules/modules.module';
     ServicesModule,
     ProfilesModule,
     ModulesModule,
+    WeatherModule,
   ],
   controllers: [AppController],
   providers: [AppService],
