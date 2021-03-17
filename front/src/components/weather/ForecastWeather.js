@@ -24,14 +24,24 @@ class ForecastWeather extends Component {
         this.state = {
             weather: {},
         };
+        let intervalID;
     }
 
-    async componentDidMount() {
+    componentDidMount() {
+        this.getWeatherInfo();
+
+        this.intervalID = setInterval(this.getWeatherInfo.bind(this), 300000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.intervalID);
+    }
+
+    getWeatherInfo() {
         const { weatherData } = this.props;
 
         if (weatherData.city) {
-            const weather = await Backend.weather.getForecast(weatherData.city);
-            this.setState({ weather });
+            Backend.weather.getForecast(weatherData.city).then(weather => this.setState({ weather }));
         }
     }
 
