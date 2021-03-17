@@ -11,6 +11,8 @@
 
 The goal of this project is to create a CDC (Connected Device Configuration) to create different profiles for clients. Each client can select a profile and the render will follow the given configuration.
 
+![screen of a profile with 4 sub modules](./.images/Screenshot_multiple_module_profile.png)
+
 ---
 ## Documentation
 *source: ./doc*

@@ -71,11 +71,16 @@ class ImgurDisplay extends Component {
 
         return (
             <div style={{ maxHeight: '500px' }}>
-                <div>
-                    {posts && posts.length !== 0?
-                        this.renderPosts(posts)
-                        : <p>Imgur content</p>
-                    }
+                <div className="d-flex">
+                    <div style={{ maxHeight: '100px', maxWidth: '25%' }}>
+                        <img src="https://cdn.kulturegeek.fr/wp-content/uploads/2017/11/Imgur-Logo.jpg" alt="imgur logo" style={{ height: '100%', display: 'block', maxWidth: 'fit-content', maxHeight: '100%', alignSelf: 'center' }} />
+                    </div>
+                    <div>
+                        {posts && posts.length !== 0?
+                            this.renderPosts(posts)
+                            : <p>Imgur content</p>
+                        }
+                    </div>
                 </div>
             </div>
         );
