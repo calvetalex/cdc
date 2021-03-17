@@ -89,18 +89,6 @@ class ActualityPage extends Component {
         try {
             return (data.map(module => {
                 if (module.subModules && module.subModules.length !== 0) {
-                    if (i > 1) {
-                        return (module.split === 1 ?
-                        <Row className="h-100">
-                            {this.renderProfile(module.subModules, i + 1)}
-                        </Row>
-                        :
-                        <Row>
-                            <div className="h-100 d-flex flex-column">
-                                {this.renderProfile(module.subModules, i + 1)}
-                            </div>
-                        </Row>);
-                    }
                     return (
                         <Container style={{ maxWidth: 'unset' }} className="h-100" key={`module-${module.id}-linkedTo-${module.fk_parent_id}`}>
                             {module.split === 1 ?
@@ -155,11 +143,13 @@ class ActualityPage extends Component {
                         </Input>
                         : null }
                 </div>
-                {current.id === -1 ?
-                    <p>Loading profiles....</p>
-                    :
-                    this.renderProfile(data.subModules)
-                }
+                <div style={{ maxHeight: '900px', height: '100%' }}>
+                    {current.id === -1 ?
+                        <p>Loading profiles....</p>
+                        :
+                        this.renderProfile(data.subModules)
+                    }
+                </div>
             </div>
         );
     }

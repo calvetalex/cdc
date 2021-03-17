@@ -17,9 +17,7 @@ export default class Navbar extends Component {
                         <div className="navbar-header">
                             <div className="navbar-brand d-none d-sm-inline-block">
                                 <div className="brand-text d-none d-lg-inline-block">
-                                    <span>Connected Device Configuration</span>
-                                    {' - '}
-                                    <strong>insert here profile name</strong>
+                                    <strong>Connected Device Configuration</strong>
                                 </div>
                                 <div className="brand-text d-none d-sm-inline-block d-lg-none">
                                     <strong>CDC</strong>

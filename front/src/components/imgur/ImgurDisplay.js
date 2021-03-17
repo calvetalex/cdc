@@ -70,7 +70,7 @@ class ImgurDisplay extends Component {
         const { posts } = this.state;
 
         return (
-            <div style={{ maxHeight: '700px' }}>
+            <div style={{ maxHeight: '500px' }}>
                 <div>
                     {posts && posts.length !== 0?
                         this.renderPosts(posts)
