@@ -7,6 +7,7 @@ import CurrentWeather from '../../components/weather/CurrentWeather';
 import Backend from '../../backend';
 
 import * as ProfilesActions from '../../store/actions/profiles';
+import ForecastWeather from '../../components/weather/ForecastWeather';
 
 class ActualityPage extends Component {
     constructor(props) {
@@ -70,7 +71,11 @@ class ActualityPage extends Component {
     renderWeather(data) {
         return (
             <Col className="h-100" style={{ border: '1px solid black' }}>
-                <CurrentWeather weatherData={data} />
+                {data.type === "current" ?
+                    <CurrentWeather weatherData={data} />
+                    :
+                    <ForecastWeather weatherData={data} />
+                }
             </Col>
         );
     }
