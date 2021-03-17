@@ -8,6 +8,7 @@ import Backend from '../../backend';
 
 import * as ProfilesActions from '../../store/actions/profiles';
 import ForecastWeather from '../../components/weather/ForecastWeather';
+import TwitterAbout from '../../components/Twitter/TwitterDisplaySubject';
 
 class ActualityPage extends Component {
     constructor(props) {
@@ -61,7 +62,7 @@ class ActualityPage extends Component {
     }
 
     renderTweets(data) {
-        return <Col className="h-100" style={{ border: '1px solid black' }}><p>Render Tweets</p></Col>;
+        return <Col className="h-100" style={{ border: '1px solid black' }}><TwitterAbout twitterOptions={data} /></Col>;
     }
 
     renderIMGUR(data) {

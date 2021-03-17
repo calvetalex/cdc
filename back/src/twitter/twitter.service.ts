@@ -16,11 +16,21 @@ export class TwitterService {
 
   async getLastTweets(subject: string): Promise<any[]> {
     try {
-      return fetch(`https://api.twitter.com/2/tweets/search/recent\?query\=${subject}`, {
+      const tweets = await fetch(`https://api.twitter.com/2/tweets/search/recent?query=${subject}&max_results=10&tweet.fields=created_at,public_metrics,lang,author_id`, {
         headers: {
           Authorization: `Bearer ${process.env.TWITTER_BEARER}`,
         }
       }).then(resp => resp.json());
+      return Promise.all(tweets.data.map(async (tweet) => {
+        let user: any;
+        try {
+          user = await fetch(`https://api.twitter.com/2/users/${tweet.author_id}`, { headers: { Authorization: `Bearer ${process.env.TWITTER_BEARER}` } }).then(res => res.json());
+          user = user.data.name;
+        } catch(e) {
+          console.error('[TWITTER] - Cannot get author, skipping');
+        }
+        return { ...tweet, user };
+      }));
     } catch (e) {
       console.error('[TWITTER] - Cannot get tweets', e);
       return [];
