@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { Carousel, CarouselItem, CarouselIndicators, CarouselControl, Input, Row, Col, Container } from 'reactstrap';
+import CurrentWeather from '../../components/weather/CurrentWeather';
 import Backend from '../../backend';
 
 import * as ProfilesActions from '../../store/actions/profiles';
@@ -67,7 +68,11 @@ class ActualityPage extends Component {
     }
 
     renderWeather(data) {
-        return <Col className="h-100" style={{ border: '1px solid black' }}><p>render weather here</p></Col>;
+        return (
+            <Col className="h-100" style={{ border: '1px solid black' }}>
+                <CurrentWeather weatherData={data} />
+            </Col>
+        );
     }
 
     renderProfile(data) {
