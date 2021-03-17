@@ -9,6 +9,7 @@ import Backend from '../../backend';
 import * as ProfilesActions from '../../store/actions/profiles';
 import ForecastWeather from '../../components/weather/ForecastWeather';
 import TwitterAbout from '../../components/Twitter/TwitterDisplaySubject';
+import ImgurDisplay from '../../components/imgur/ImgurDisplay';
 
 class ActualityPage extends Component {
     constructor(props) {
@@ -66,7 +67,7 @@ class ActualityPage extends Component {
     }
 
     renderIMGUR(data) {
-        return <Col className="h-100" style={{ border: '1px solid black' }}><p>render IMGUR here</p></Col>;
+        return <Col className="h-100" style={{ border: '1px solid black', maxHeight: '800px', overflow: 'auto' }}><ImgurDisplay /></Col>;
     }
 
     renderWeather(data) {

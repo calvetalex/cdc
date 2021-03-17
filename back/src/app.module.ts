@@ -8,6 +8,7 @@ import { ProfilesModule } from './profiles/profiles.module';
 import { ModulesModule } from './modules/modules.module';
 import { WeatherModule } from './weather/weather.module';
 import { TwitterModule } from './twitter/twitter.module';
+import { ImgurModule } from './imgur/imgur.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { TwitterModule } from './twitter/twitter.module';
     ModulesModule,
     WeatherModule,
     TwitterModule,
+    ImgurModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -3,6 +3,7 @@ import oauth from './oauth';
 import profiles from './profiles';
 import weather from './weather';
 import twitter from './twitter';
+import imgur from './imgur';
 
 export default {
     user,
@@ -10,4 +11,5 @@ export default {
     profiles,
     weather,
     twitter,
+    imgur,
 };
