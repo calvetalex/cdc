@@ -16,7 +16,7 @@ export class TwitterService {
 
   async getLastTweets(subject: string): Promise<any[]> {
     try {
-      const tweets = await fetch(`https://api.twitter.com/2/tweets/search/recent?query=${subject}&max_results=10&tweet.fields=created_at,public_metrics,lang,author_id`, {
+      const tweets = await fetch(`https://api.twitter.com/2/tweets/search/recent?query=${subject}&max_results=20&tweet.fields=created_at,public_metrics,lang,author_id`, {
         headers: {
           Authorization: `Bearer ${process.env.TWITTER_BEARER}`,
         }

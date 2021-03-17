@@ -40,9 +40,8 @@ class TwitterAbout extends Component {
         const { twitterOptions } = this.props;
         const { tweets } = this.state;
 
-        console.log(tweets)
         return (
-            <div className="h-100" style={{ padding: '10px', overflow: 'auto' }}>
+            <div className="h-100" style={{ padding: '10px', overflow: 'auto', maxHeight: '700px' }}>
                 <div style={{ maxHeight: '60px', margin: '15px' }} className="d-flex align-items-center">
                     <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/c/c8/Twitter_Bird.svg/1200px-Twitter_Bird.svg.png" alt="logo twitter" style={{ width: 'auto', height: '60px' }} />
                     {twitterOptions.subject ?

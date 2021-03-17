@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import { Card, CardImg } from 'reactstrap';
 import Backend from '../../backend';
+import CardHeader from 'reactstrap/lib/CardHeader';
+import CardBody from 'reactstrap/lib/CardBody';
 
 class ImgurDisplay extends Component {
     constructor(props) {
@@ -50,6 +52,14 @@ class ImgurDisplay extends Component {
                     {data.map(p => (
                         <Card key={`meme-${p.id}`} style={{ maxWidth: '512px' }}>
                             <CardImg src={p.link} alt={`meme from ${p.link}`} width="80%" />
+                            <CardHeader>
+                                <h5>{`Posted by ${p.account_url ? p.account_url : "a guest"}`}</h5>
+                            </CardHeader>
+                            {p.description ?
+                                <CardBody>
+                                    {p.description}
+                                </CardBody>
+                                : null}
                         </Card>))}
                 </div>
             );
@@ -60,7 +70,7 @@ class ImgurDisplay extends Component {
         const { posts } = this.state;
 
         return (
-            <div style={{ maxHeight: '800px' }}>
+            <div style={{ maxHeight: '700px' }}>
                 <div>
                     {posts && posts.length !== 0?
                         this.renderPosts(posts)

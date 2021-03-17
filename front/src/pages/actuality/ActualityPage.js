@@ -36,9 +36,9 @@ class ActualityPage extends Component {
         }
     }
 
-    renderText(data) {
+    renderText(data, style={}) {
         return (
-            <Col className="h-100" style={{ border: '1px solid black' }}>
+            <Col className="h-100" style={{ ...style, border: '1px solid black' }}>
                 <div className="text_component">
                     {data.title ? <h1>{data.title}</h1> : null}
                     {data.content ? <p>{data.content}</p> : null}
@@ -47,27 +47,27 @@ class ActualityPage extends Component {
         );
     }
 
-    renderVideo(data) {
+    renderVideo(data, style = {}) {
         return (
-            <Col className="h-100" style={{ border: '1px solid black' }}>
+            <Col className="h-100" style={{ ...style, border: '1px solid black' }}>
                 <iframe src={`${data.url.replace(/watch\?v=/gm, 'embed/')}?controls=0&autoplay=1&playlist=${data.url.match(/watch\?v=(.*)/)[1]}&loop=1`} style={{ height: '100%', width: '100%' }} />
             </Col>
         );
     }
 
-    renderImages(data) {
+    renderImages(data, style = {}) {
         if (data.length && data.length > 1) {
-            return (<Col className="h-100" style={{ border: '1px solid black' }}><p>insert here Carousel item</p></Col>);
+            return (<Col className="h-100" style={{...style, border: '1px solid black' }}><p>insert here Carousel item</p></Col>);
         }
-        return <Col className="h-100" style={{ border: '1px solid black' }}><img src={data.src} alt={data.alt ? data.alt : 'representation of the subject'} /></Col>;
+        return <Col className="h-100" style={{...style, border: '1px solid black' }}><img src={data.src} alt={data.alt ? data.alt : 'representation of the subject'} /></Col>;
     }
 
-    renderTweets(data) {
-        return <Col className="h-100" style={{ border: '1px solid black' }}><TwitterAbout twitterOptions={data} /></Col>;
+    renderTweets(data, style = {}) {
+        return <Col className="h-100" style={{...style, border: '1px solid black', overflow: 'auto' }}><TwitterAbout twitterOptions={data} /></Col>;
     }
 
-    renderIMGUR(data) {
-        return <Col className="h-100" style={{ border: '1px solid black', maxHeight: '800px', overflow: 'auto' }}><ImgurDisplay /></Col>;
+    renderIMGUR(data, style = {}) {
+        return <Col className="h-100" style={{ ...style, border: '1px solid black', overflow: 'auto' }}><ImgurDisplay /></Col>;
     }
 
     renderWeather(data) {
@@ -82,22 +82,34 @@ class ActualityPage extends Component {
         );
     }
 
-    renderProfile(data) {
+    renderProfile(data, i = 0) {
         if (!data || Object.keys(data).length === 0) {
             return null;
         }
         try {
             return (data.map(module => {
                 if (module.subModules && module.subModules.length !== 0) {
+                    if (i > 1) {
+                        return (module.split === 1 ?
+                        <Row className="h-100">
+                            {this.renderProfile(module.subModules, i + 1)}
+                        </Row>
+                        :
+                        <Row>
+                            <div className="h-100 d-flex flex-column">
+                                {this.renderProfile(module.subModules, i + 1)}
+                            </div>
+                        </Row>);
+                    }
                     return (
                         <Container style={{ maxWidth: 'unset' }} className="h-100" key={`module-${module.id}-linkedTo-${module.fk_parent_id}`}>
                             {module.split === 1 ?
                                 <Row className="h-100">
-                                    {this.renderProfile(module.subModules)}
+                                    {this.renderProfile(module.subModules, i + 1)}
                                 </Row>
                                 :
                                 <Row className="h-50">
-                                    {this.renderProfile(module.subModules)}
+                                    {this.renderProfile(module.subModules, i + 1)}
                                 </Row>
                             }
                         </Container>
@@ -132,6 +144,7 @@ class ActualityPage extends Component {
         const { profiles } = this.props;
         const { current, data } = this.state;
 
+        console.log(data)
         return (
             <div className="d-flex flex-column h-100">
                 <div className="d-flex justify-content-between" style={{ width: '100%', marginBottom: '1em' }}>
