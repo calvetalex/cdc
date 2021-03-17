@@ -7,6 +7,7 @@ import { ServicesModule } from './services/services.module';
 import { ProfilesModule } from './profiles/profiles.module';
 import { ModulesModule } from './modules/modules.module';
 import { WeatherModule } from './weather/weather.module';
+import { TwitterModule } from './twitter/twitter.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { WeatherModule } from './weather/weather.module';
     ProfilesModule,
     ModulesModule,
     WeatherModule,
+    TwitterModule,
   ],
   controllers: [AppController],
   providers: [AppService],
