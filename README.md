@@ -14,6 +14,15 @@
 
 The goal of this project is to create a CDC (Connected Device Configuration) to create different profiles for clients. Each client can select a profile and the render will follow the given configuration.
 
+Current modules:
+- **Text** : display a message and his title if one is provided
+- **IMG** : display an image (or a list of images if multiple src are provided)
+- **VIDEO**: insert a ytb video (auto update every 5min)
+- **TWITTER** : display the last 20 tweets about a chosen subject
+- **IMGUR**: display the most viral content (auto update every 5min)
+- **WEATHER**: display the current weather or the forecast weather for a chosen city (auto update every 5min)
+
+*Example of a profile with 4 modules:*
 ![screen of a profile with 4 sub modules](https://github.com/calvetalex/cdc/blob/main/doc/.images/Screenshot_multiple_module_profile.png?raw=true)
 
 ---
