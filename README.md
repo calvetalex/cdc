@@ -36,7 +36,7 @@ _source: ./doc_
 
 **bdd.pdf**: database information. How it's built and how it's working.
 
-![Server UML]()
+![Server UML](https://github.com/calvetalex/cdc/blob/main/doc/.images/server_uml.png?raw=true)
 
 ---
 
