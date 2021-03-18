@@ -18,8 +18,8 @@ Current modules:
 
 - **Text** : display a message and his title if one is provided
 - **IMG** : display an image (or a list of images if multiple src are provided)
-- **VIDEO**: insert a ytb video (auto update every 5min)
-- **TWITTER** : display the last 20 tweets about a chosen subject
+- **VIDEO**: insert a ytb video (autoplay and loop)
+- **TWITTER** : display the last 20 tweets about a chosen subject (auto update every 5min)
 - **IMGUR**: display the most viral content (auto update every 5min)
 - **WEATHER**: display the current weather or the forecast weather for a chosen city (auto update every 5min)
 
