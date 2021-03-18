@@ -64,7 +64,13 @@ class ActualityPage extends Component {
                 </Col>
             );
         }
-        return <Col className="h-100" style={{...style, border: '1px solid black' }}><img src={data.src} alt={data.alt ? data.alt : 'representation of the subject'} /></Col>;
+        return (
+            <Col className="h-100" style={{...style, border: '1px solid black' }}>
+                <div className="h-100 d-flex justify-content-center">
+                    <img src={data.src} alt={data.alt ? data.alt : 'representation of the subject'} style={{ height: '100%', display: 'block', maxWidth: '100%', maxHeight: '100%', objectFit:'contain' }}/>
+                </div>
+            </Col>
+        );
     }
 
     renderTweets(data, style = {}) {
