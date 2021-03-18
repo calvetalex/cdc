@@ -118,7 +118,7 @@ class ActualityPage extends Component {
                         case 5:
                             return this.renderWeather(service.data);
                         default:
-                            return renderText(service.data);
+                            return this.renderText(service.data);
                     }
                 });
             }));

@@ -61,7 +61,6 @@ services:
       - ./front/:/src
     environment:
       REACT_APP_API_URL: "http://localhost:8080"
-      REACT_APP_GOOGLE_TOKEN: "406768800954-s23n3hlg3g5qgtaq2dai34jnv5vq7fjp.apps.googleusercontent.com"
 
   front-nginx:
     image: nginx:1.19.6-alpine
