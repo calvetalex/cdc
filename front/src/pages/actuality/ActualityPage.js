@@ -10,6 +10,7 @@ import * as ProfilesActions from '../../store/actions/profiles';
 import ForecastWeather from '../../components/weather/ForecastWeather';
 import TwitterAbout from '../../components/Twitter/TwitterDisplaySubject';
 import ImgurDisplay from '../../components/imgur/ImgurDisplay';
+import CustomCarousel from '../../components/Images/CustomCarousel';
 
 class ActualityPage extends Component {
     constructor(props) {
@@ -57,7 +58,11 @@ class ActualityPage extends Component {
 
     renderImages(data, style = {}) {
         if (data.length && data.length > 1) {
-            return (<Col className="h-100" style={{...style, border: '1px solid black' }}><p>insert here Carousel item</p></Col>);
+            return (
+                <Col className="h-100" style={{...style, border: '1px solid black' }}>
+                    <CustomCarousel items={data} />
+                </Col>
+            );
         }
         return <Col className="h-100" style={{...style, border: '1px solid black' }}><img src={data.src} alt={data.alt ? data.alt : 'representation of the subject'} /></Col>;
     }
