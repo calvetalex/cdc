@@ -21,7 +21,7 @@ class PrivateRoute extends Component {
 PrivateRoute.propTypes = {
     component: PropTypes.func.isRequired,
     path: PropTypes.string.isRequired,
-    isAuth: PropTypes.func.isRequired,
+    isAuth: PropTypes.func,
 };
 
 export default PrivateRoute;

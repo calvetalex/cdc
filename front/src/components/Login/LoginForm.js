@@ -36,8 +36,6 @@ class LoginForm extends Component {
         setUser(formValues).then((user) => {
             if (!user || Object.keys(user).length === 0) {
                 this.setState({ isLoading: false, error: 'Veuillez vérifier les informations fournies' });
-            } else {
-                this.setState({ isLoading: false });
             }
         });
     }
