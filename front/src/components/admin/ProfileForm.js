@@ -145,7 +145,7 @@ class ProfileForm extends Component {
                     return null;
                 }
                 return (
-                    <div key={`module-${module.id}`}>
+                    <div key={`module-${module.id}`} style={{ margin: '1em', border: '1px solid black', padding: '1.5em', boxShadow: '.2em .2em .1em .1em teal'}}>
                         <FormGroup>
                             <Label for="splitInput">
                                 Do you want to split the screen ?

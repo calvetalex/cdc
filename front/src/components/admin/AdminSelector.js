@@ -48,8 +48,8 @@ class AdminSelector extends Component {
             <div>
                 <h1>Admin Panel</h1>
                 <p>You can use this panel to configure your profiles or to add an administrator.</p>
-                <Row>
-                    <Col sm={12} style={{ border: '1px solid black', padding: '5px' }}>
+                <Row style={{ background: 'rgb(210,210,210)' }}>
+                    <Col sm={12} style={{ border: '1px solid black', padding: '5px' }} style={{ background: 'rgb(180,180,180)' }}>
                         <Nav className="justify-content-between">
                             {Object.keys(STATUS).map(elem => (
                                 <NavItem key={`status-${elem}`}>
@@ -65,9 +65,12 @@ class AdminSelector extends Component {
                                             cursor: 'pointer',
                                             overflow: 'hidden',
                                             outline: 'none',
+                                            fontSize: '22px',
                                         }}
                                     >
-                                        {elem}
+                                        <strong>
+                                            {elem}
+                                        </strong>
                                     </button>
                                 </NavItem>
                             ))}
