@@ -103,7 +103,7 @@ class ProfileForm extends Component {
                                 return e.fk_parent_id !== element.id ? e : null;
                             })
                             .filter((e) => e !== null && e !== undefined),
-                            services: [...profile.services, {...IService, fk_module_id: element.id}],
+                        services: [...profile.services.filter(e => profile.subModules.find(m => m.id === e.fk_module_id).fk_parent_id !== element.id), {...IService, fk_module_id: element.id}],
                     },
                 });
             } else {
