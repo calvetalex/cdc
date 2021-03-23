@@ -1,0 +1,71 @@
+{
+    "services": [
+        {
+            "name": "Message",
+            "service_type": 0,
+            "data": [
+                {
+                    "name": "title",
+                    "content": "text"
+                },
+                {
+                    "name": "content",
+                    "content": "text"
+                }
+            ]
+        },
+        {
+            "name": "Embed video",
+            "service_type": 1,
+            "data": [
+                {
+                    "name": "url",
+                    "content": "text",
+                    "placeholder": "Enter the url of a youtube video here..."
+                }
+            ]
+        },
+        {
+            "name": "Image",
+            "service_type": 2,
+            "data": [
+                {
+                    "name": "src",
+                    "content": "text",
+                    "placeholder": "Enter the image's url here"
+                }
+            ]
+        },
+        {
+            "name": "TWITTER",
+            "service_type": 3,
+            "data": [
+                {
+                    "name": "subject",
+                    "content": "text",
+                    "placeholder": "Enter here the keyword you are looking for"
+                }
+            ]
+        },
+        {
+            "name": "IMGUR",
+            "service_type": 4
+        },
+        {
+            "name": "METEO",
+            "service_type": 5,
+            "data": [
+                {
+                    "name": "city",
+                    "content": "text",
+                    "placeholder": "Enter the city here... ex: Toulouse"
+                },
+                {
+                    "name": "type",
+                    "content": "select",
+                    "values": ["current", "forecast"]
+                }
+            ]
+        }
+    ]
+}

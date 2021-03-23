@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Form, FormGroup, Label, Input, Button, Alert } from "reactstrap";
 import CollapsedCard from "../CollapsedCard";
 
+import ServiceConfig from './Config.json';
 import * as ProfilesActions from "../../store/actions/profiles";
 
 const DIRECTION = {
@@ -14,9 +15,9 @@ const DIRECTION = {
 
 const IService = {
     id: 1,
-    fk_module_id: 1,
-    place: -1,
-    service_type: -1,
+    fk_module_id: 2,
+    place: 0,
+    service_type: 0,
     data: JSON,
 };
 
@@ -34,14 +35,14 @@ class ProfileForm extends Component {
             profile: {
                 id: 1,
                 name: "",
-                services: [],
+                services: [{...IService}],
                 subModules: [{ ...IModule }],
             },
         };
     }
 
     async componentDidMount() {
-        console.log("GET PROFILES HERE");
+        console.log("GET PROFILES HERE TO ENABLE UPDATE");
     }
 
     addService(parent) {
@@ -49,8 +50,12 @@ class ProfileForm extends Component {
 
         const service = { ...IService };
         service.fk_module_id = parent;
-        profile.services.push({ service });
-        this.setState({ profile });
+        this.setState({ profile: {...profile, services: [...profile.services, service]} });
+    }
+
+    removeService(parentID) {
+        const { profile } = this.state;
+        this.setState({ profile: {...profile, services: profile.services.filter(e => e.fk_module_id !== parentID)} });
     }
 
     splitModule(id, direction) {
@@ -62,12 +67,13 @@ class ProfileForm extends Component {
         const subModule2 = { ...IModule };
         subModule1.fk_parent_id = id;
         subModule2.fk_parent_id = id;
-        subModule1.id = -profile.subModules.length - 1;
-        subModule2.id = -profile.subModules.length - 2;
+        subModule1.id = profile.subModules.length - 1;
+        subModule2.id = profile.subModules.length - 2;
         this.setState({
             profile: {
                 ...profile,
                 subModules: [...profile.subModules, subModule1, subModule2],
+                services: [...profile.services.filter(e => e.fk_module_id !== id), {...IService, fk_module_id: subModule1.id}, {...IService, fk_module_id: subModule2.id}],
             },
         });
     }
@@ -97,6 +103,7 @@ class ProfileForm extends Component {
                                 return e.fk_parent_id !== element.id ? e : null;
                             })
                             .filter((e) => e !== null && e !== undefined),
+                            services: [...profile.services, {...IService, fk_module_id: element.id}],
                     },
                 });
             } else {
@@ -130,7 +137,7 @@ class ProfileForm extends Component {
 
     renderModules(parentId) {
         const { profile } = this.state;
-        console.log(profile.subModules);
+        console.log(profile);
 
         const modules = profile.subModules
             .map((module) => {
