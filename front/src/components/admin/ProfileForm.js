@@ -67,8 +67,8 @@ class ProfileForm extends Component {
         const subModule2 = { ...IModule };
         subModule1.fk_parent_id = id;
         subModule2.fk_parent_id = id;
-        subModule1.id = profile.subModules.length - 1;
-        subModule2.id = profile.subModules.length - 2;
+        subModule1.id = -profile.subModules.length - 1;
+        subModule2.id = -profile.subModules.length - 2;
         this.setState({
             profile: {
                 ...profile,
