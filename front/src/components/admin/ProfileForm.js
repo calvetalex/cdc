@@ -82,15 +82,10 @@ class ProfileForm extends Component {
         const { profile } = this.state;
         const newData = { [ev.target.name]: ev.target.value };
 
-        console.log("TARGET ", element);
-        console.log("EVENT NAME: " + ev.target.name + " VALUE: " + ev.target.value)
-        console.log(`DEFAULT ? ${+ev.target.value === DIRECTION.DEFAULT}`)
         if (element.fk_parent_id) {
             if (!profile.subModules.find((e) => e.fk_parent_id === element.id)) {
-                console.log("SPLIT")
                 return this.splitModule(element.id, +ev.target.value);
             } else if (+ev.target.value === DIRECTION.DEFAULT) {
-                console.log("UNSPLIT")
                 return this.setState({
                     profile: {
                         ...profile,
@@ -107,7 +102,6 @@ class ProfileForm extends Component {
                     },
                 });
             } else {
-                console.log("CHANGE SPLIT")
                 return this.setState({ profile: {...profile, subModules: profile.subModules.map(e => {
                     if (e.id === element.id) {
                         e.split = +ev.target.value;
@@ -128,7 +122,6 @@ class ProfileForm extends Component {
                 },
             });
         }
-        console.log("no changes");
     }
 
     renderService(moduleID) {
