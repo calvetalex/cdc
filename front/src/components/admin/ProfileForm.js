@@ -73,7 +73,7 @@ class ProfileForm extends Component {
             profile: {
                 ...profile,
                 subModules: [...profile.subModules, subModule1, subModule2],
-                services: [...profile.services.filter(e => e.fk_module_id !== id), {...IService, fk_module_id: subModule1.id}, {...IService, fk_module_id: subModule2.id}],
+                services: [...profile.services.filter(e => e.fk_module_id !== id), {...IService, id: -profile.services.length - 1, fk_module_id: subModule1.id}, {...IService, id: -profile.services.length - 2, fk_module_id: subModule2.id}],
             },
         });
     }
@@ -98,7 +98,7 @@ class ProfileForm extends Component {
                                 return e.fk_parent_id !== element.id ? e : null;
                             })
                             .filter((e) => e !== null && e !== undefined),
-                        services: [...profile.services.filter(e => profile.subModules.find(m => m.id === e.fk_module_id).fk_parent_id !== element.id), {...IService, fk_module_id: element.id}],
+                        services: [...profile.services.filter(e => profile.subModules.find(m => m.id === e.fk_module_id).fk_parent_id !== element.id), {...IService, id: -profile.services.length - 1, fk_module_id: element.id}],
                     },
                 });
             } else {
