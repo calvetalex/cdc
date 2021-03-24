@@ -314,7 +314,7 @@ body {
   }
 
   .page {
-    background: linear-gradient(rgba(0, 128, 128, .5), rgba(175, 238, 238, .5));
+    background: #EFEFEF;
   }
 
   .page .text-white {

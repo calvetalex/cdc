@@ -24,9 +24,6 @@ export class ProfilesService {
     return this.profilesRepository.find();
   }
 
-
-
-  /// CETTE FONCTION ? 
   async linkModule(id, modules, services) {
     console.log("NEW CALL")
     const res = await Promise.all(
