@@ -27,19 +27,33 @@ export class ProfilesController {
     return await this.profilesService.getByName(name);
   }
 
-  @Put()
   @Post()
   async createProfile(
     @Res() res,
-    @Body() body: ProfilesDto,
+    @Body() body: any,
   ): Promise<Profiles> {
     try {
-      const newProfile = this.profilesService.saveData(body);
+      const newProfile = await this.profilesService.createProfileAndModules(body);
       return res.status(HttpStatus.OK).json({
         newProfile,
       });
     } catch (e) {
       console.error('[PROFILES] - CANNOT CREATE NEW PROFILE', e);
+      return res.status(HttpStatus.BAD_REQUEST).json({
+        message: 'An error occurred',
+        status: 400,
+      });
+    }
+  }
+
+  @Put()
+  async update(@Res() res, @Body() body: ProfilesDto): Promise<Profiles> {
+    try {
+      const newProfile = this.profilesService.saveData(body);
+      return res.status(HttpStatus.OK).json({
+        newProfile,
+      });
+    } catch(e) {
       return res.status(HttpStatus.BAD_REQUEST).json({
         message: 'An error occurred',
         status: 400,

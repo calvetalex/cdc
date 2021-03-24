@@ -12,14 +12,7 @@ export class ServicesService {
   ) {}
 
   async saveData(action: ServicesDto): Promise<Services> {
-    const copy = { ...action };
-    try {
-      JSON.parse(copy.data);
-    } catch (e) {
-      console.error('SERVICES: data is not a json. Trying to fix that...');
-      copy.data = JSON.stringify(copy.data);
-    }
-    return this.servicesRepository.save(copy);
+    return this.servicesRepository.save(action);
   }
 
   async delete(action: ServicesDto): Promise<any> {

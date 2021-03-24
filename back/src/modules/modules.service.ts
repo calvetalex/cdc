@@ -47,4 +47,10 @@ export class ModulesService {
     });
     return res;
   }
+
+  async createModuleAndService(data) {
+    const module = await this.saveData(data.module);
+    const services = await this.servicesService.saveData({ ...data.service, fk_module_id: module.id });
+    return { module, services};
+  }
 }
