@@ -21,7 +21,7 @@ const verticalSplit = {
     ],
     services: [
         {id: -1, fk_module_id: -2, place: 0, service_type: 3, data: {subject:"javascript"} },
-        {id: -2, fk_module_id: -3, place: 0, service_type: 4, data: {} },
+        {id: -2, fk_module_id: -3, place: 0, service_type: 2, data: [{"src": "https://i.pinimg.com/originals/76/f8/d7/76f8d7c48c62c2626f1fbac339d4b5d9.jpg"}, {"src": "https://www.actugaming.net/wp-content/uploads/2016/02/horizon-zero-dawn-889x500.jpg"}, {"src": "https://i.jeuxactus.com/datas/jeux/k/i/killzone-shadow-fall/xl/killzone-shadow-fall-5ffa0be3c2608.jpg"}] },
     ]
 };
 
@@ -56,7 +56,7 @@ const harderSplit = {
     ],
     services: [
         {id: -1, fk_module_id: -4, place: 0, service_type: 1, data: {url: 'https://www.youtube.com/watch?v=9sjWU5dGcGI'} },
-        {id: -2, fk_module_id: -5, place: 0, service_type: 2, data: [{"src": "https://i.pinimg.com/originals/76/f8/d7/76f8d7c48c62c2626f1fbac339d4b5d9.jpg"}, {"src": "https://www.actugaming.net/wp-content/uploads/2016/02/horizon-zero-dawn-889x500.jpg"}, {"src": "https://i.jeuxactus.com/datas/jeux/k/i/killzone-shadow-fall/xl/killzone-shadow-fall-5ffa0be3c2608.jpg"}] },
+        {id: -2, fk_module_id: -5, place: 0, service_type: 4, data: {} },
         {id: -3, fk_module_id: -6, place: 0, service_type: 3, data: {subject: 'hard work'} },
         {id: -4, fk_module_id: -7, place: 0, service_type: 5, data: {city: 'Toulouse', type: 'current'} },
     ]
