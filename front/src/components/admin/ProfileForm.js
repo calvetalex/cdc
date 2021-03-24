@@ -17,8 +17,8 @@ const IService = {
     id: 1,
     fk_module_id: 2,
     place: 0,
-    service_type: 0,
-    data: JSON,
+    service_type: 2,
+    data: {},
 };
 
 const IModule = {
@@ -121,7 +121,7 @@ class ProfileForm extends Component {
                     ...profile,
                     services: profile.services.map((elem) => {
                         if (elem.id === element.id) {
-                            return { ...elem, ...newData };
+                            return { ...elem, data: {...elem.data, ...newData }};
                         }
                         return elem;
                     }),
@@ -132,7 +132,42 @@ class ProfileForm extends Component {
     }
 
     renderService(moduleID) {
-        return <p>Here will be the service choice</p>;
+        const { profile } = this.state;
+
+        return profile.services.map(e => {
+            if (e.fk_module_id === moduleID) {
+                const data = ServiceConfig.services.find(s => s.service_type === e.service_type);
+                return (
+                    <div style={{ margin: '.3em' }}>
+                        <Input type="select" name="service-type" onChange={ev => this.setState({ profile: {...profile, services: profile.services.map(serv => serv.id === e.id ? {...serv, service_type: +ev.target.value, data: {}} : e)} })}>
+                            {ServiceConfig.services.map(opt => (
+                                <option value={opt.service_type} selected={opt.service_type === e.service_type}>{opt.name}</option>
+                            ))}
+                        </Input>
+                        {data.data ?
+                            <div>
+                                <h4>{data.name}</h4>
+                                {data.data.map(d => (
+                                    <div>
+                                        <Label>{`${d.name} :`}</Label>
+                                        {d.content === "select" ?
+                                            <Input type="select" name={d.name} onChange={(ev) => this.setState({ profile: {...profile, services: profile.services.map(serv => serv.id === e.id ? {...serv, data: {...serv.data, [ev.target.name]: d.values[ev.target.value]}} : serv)} })}>
+                                                <option value={-1}>-- SELECT --</option>
+                                                {d.values.map((opt, idx) => <option value={idx}>{opt}</option>)}
+                                            </Input>
+                                            :
+                                            <Input type={d.content} name={d.name} onChange={ev => this.handleChange(e, ev)} />
+                                        }
+                                    </div>
+                                ))}
+                            </div>
+                            : "This service does not require any user action to work."
+                        }
+                    </div>
+                )
+            }
+            return null;
+        }).filter(e => e !== null && e !== undefined);
     }
 
     renderModules(parentId) {
