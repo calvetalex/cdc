@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Carousel, CarouselItem, CarouselIndicators, CarouselControl, Input, Row, Col, Container } from 'reactstrap';
+import { Alert, Input, Row, Col, Container } from 'reactstrap';
 import CurrentWeather from '../../components/weather/CurrentWeather';
 import Backend from '../../backend';
 
@@ -22,13 +22,14 @@ class ActualityPage extends Component {
                 name: '',
             },
             data: {},
+            error: '',
         };
     }
 
     async componentDidMount() {
         const { setProfiles } = this.props;
 
-        setProfiles().then(res => res.length !== 0 ? this.setState({ current: res[0] }) : null);
+        setProfiles().then(res => res.length !== 0 ? this.setState({ current: res[0] }) : this.setState({ error: 'No profile available. Please contact an administrator' }));
     }
 
     async componentDidUpdate(prevProps, prevState) {
@@ -107,9 +108,9 @@ class ActualityPage extends Component {
                                     {this.renderProfile(module.subModules, i + 1)}
                                 </Row>
                                 :
-                                <Row className="h-50">
+                                <div className="h-50">
                                     {this.renderProfile(module.subModules, i + 1)}
-                                </Row>
+                                </div>
                             }
                         </Container>
                     );
@@ -141,7 +142,7 @@ class ActualityPage extends Component {
 
     render() {
         const { profiles } = this.props;
-        const { current, data } = this.state;
+        const { current, data, error } = this.state;
 
         console.log(data)
         return (
@@ -156,8 +157,12 @@ class ActualityPage extends Component {
                 </div>
                 <div style={{ maxHeight: '900px', height: '100%' }}>
                     {current.id === -1 ?
-                        <p>Loading profiles....</p>
-                        :
+                        (error ?
+                            <Alert color="info">{error}</Alert>
+                            :
+                            <p>Loading profiles....</p>
+
+                        ) :
                         this.renderProfile(data.subModules)
                     }
                 </div>
