@@ -12,7 +12,7 @@ const normalModule = {
 }
 
 const verticalSplit = {
-    name: 'basic split',
+    name: 'Vertical split',
     id: 1,
     modules: [
         {id: 10, fk_parent_id: 1, split: 1, global: true},
@@ -25,8 +25,22 @@ const verticalSplit = {
     ]
 };
 
+const horizontalSplit = {
+    name: 'Horizontal split',
+    id: 1,
+    modules: [
+        {id: 10, fk_parent_id: 1, split: 2, global: true},
+        {id: -2, fk_parent_id: 10, split: 0, global: false},
+        {id: -3, fk_parent_id: 10, split: 0, global: false},
+    ],
+    services: [
+        {id: -1, fk_module_id: -2, place: 0, service_type: 0, data: {title: "Message Service", content: "You can use this service to display any information. Does not support HTML or markedown to prevent security breach"} },
+        {id: -2, fk_module_id: -3, place: 0, service_type: 2, data: {src: "https://i.pinimg.com/originals/09/6a/35/096a35453660aa9b83ba4ab6d9182d61.jpg"}}
+    ],
+};
+
 const hardSplit = {
-    name: 'hard test',
+    name: 'hard test with a sub split',
     id: 1,
     modules: [
         {id: 10, fk_parent_id: 1, split: 2, global: true},
@@ -43,7 +57,7 @@ const hardSplit = {
 }
 
 const harderSplit = {
-    name: 'harder test',
+    name: 'harder test with 2 sub split',
     id: 1,
     modules: [
         {id: 10, fk_parent_id: 1, split: 2, global: true},
@@ -62,7 +76,7 @@ const harderSplit = {
     ]
 }
 
-const toDo = [normalModule, verticalSplit, hardSplit, harderSplit];
+const toDo = [normalModule, verticalSplit, horizontalSplit, hardSplit, harderSplit];
 
 Promise.all(toDo.map((p, idx) => {
     setTimeout(() => (fetch("http://localhost:8080/profiles", {
